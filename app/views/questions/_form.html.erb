@@ -1,0 +1,19 @@
+<%= simple_form_for(@question) do |f| %>
+  <%= f.error_notification %>
+
+  <div class="form-inputs">
+    <%= f.input :subject, label: 'Предмет обращения' %>
+    <%= f.input :importance, label: 'Важность проблемы'  %>
+    <%= f.input :category, label: 'Категория вопроса' %>
+    <%= f.input :body, label: 'Вопрос' %>
+    <%= f.input :city, label: 'Город' %>
+    <%= f.input :email, label: 'E-Mail' %>
+    <%= f.input :phone, label: 'Контактный телефон' %>
+    <%= f.input :contact, label: 'Другие способы связи' %>
+    <%= f.error :base %>
+  </div>
+
+  <div class="form-actions">
+    <%= f.button :submit %>
+  </div>
+<% end %>
