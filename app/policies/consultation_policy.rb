@@ -11,6 +11,21 @@ class ConsultationPolicy < ApplicationPolicy
     false
   end
 
+  def index?
+    return true if @current_user
+    false
+  end
+
+  def show?
+    return true if @current_user
+    false
+  end
+
+  def update?
+    return true if @current_user
+    false
+  end
+
   def permitted_attributes(params)
     if params[:action] == 'update'
       [consultation: [:id, :subject, :importance, :body, :city, :skype, :email, :phone, :archive]]

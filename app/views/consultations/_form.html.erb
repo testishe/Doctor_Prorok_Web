@@ -1,17 +1,18 @@
-<%= form_with(model: consultation, local: true) do |form| %>
-  <% if consultation.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(consultation.errors.count, "error") %> prohibited this consultation from being saved:</h2>
+<%= simple_form_for(@consultation) do |f| %>
+  <%= f.error_notification %>
 
-      <ul>
-      <% consultation.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
+  <div class="form-inputs">
+    <%= f.input :subject, label: 'Предмет обращения' %>
+    <%= f.input :importance, label: 'Важность проблемы'  %>
+    <%= f.input :body, label: 'Вопрос' %>
+    <%= f.input :city, label: 'Город' %>
+    <%= f.input :skype, label: 'Skype name' %>
+    <%= f.input :email, label: 'E-Mail' %>
+    <%= f.input :phone, label: 'Контактный телефон' %>
+    <%= f.error :base %>
+  </div>
 
-  <div class="actions">
-    <%= form.submit %>
+  <div class="form-actions">
+    <%= f.button :submit, "Отправить запрос" %>
   </div>
 <% end %>

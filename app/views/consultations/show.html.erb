@@ -1,4 +1,59 @@
-<p id="notice"><%= notice %></p>
+<div style="width: 100%;">
+  <p id="notice"><%= notice %></p>
+  <div class="buttons_padding">
+    <%= link_to 'К списку вопросов', consultations_path, class: "btn btn-primary" %>
+  </div>
 
-<%= link_to 'Edit', edit_consultation_path(@consultation) %> |
-<%= link_to 'Back', consultations_path %>
+  <div class="container">
+    <h2>Подробная информация </h2>
+    <table class="table table-bordered">
+      <tbody>
+        <tr>
+          <th> ID </th>
+          <td><%= @consultation.id %></td>
+        </tr>
+
+        <tr>
+          <th> Предмет вопроса: </th>
+          <td><%= @consultation.subject %></td>
+        </tr>
+
+        <tr>
+          <th> Важность вопроса: </th>
+          <td><%= @consultation.importance %></td>
+        </tr>
+
+        <tr>
+          <th> Тело вопроса: </th>
+          <td><%= @consultation.body %></td>
+        </tr>
+
+        <tr>
+          <th> Город: </th>
+          <td><%= @consultation.city %></td>
+        </tr>
+
+        <tr>
+          <th> Email: </th>
+          <td><%= @consultation.email %></td>
+        </tr>
+
+        <tr>
+          <th> Номер телефона: </th>
+          <td><%= @consultation.phone %></td>
+        </tr>
+
+        <tr>
+          <th> Skype: </th>
+          <td><%= @consultation.skype %></td>
+        </tr>
+      
+      </tbody>
+    </table>
+  </div>
+
+  <div class="buttons_padding">
+    
+  </div>
+
+</div>

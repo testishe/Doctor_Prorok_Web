@@ -1,29 +1,19 @@
 class ConsultationsController < ApplicationController
-  before_action :authenticate_user!, except: [:new, :create]
-  before_action :set_consultation, only: [:show, :edit, :update, :destroy]
+  before_action :set_consultation, only: [:show, :edit, :update]
 
-  # GET /consultations
-  # GET /consultations.json
   def index
+    authorize Consultation
     @consultations = Consultation.all
   end
 
-  # GET /consultations/1
-  # GET /consultations/1.json
   def show
+    authorize Consultation
   end
 
-  # GET /consultations/new
   def new
     @consultation = Consultation.new
   end
 
-  # GET /consultations/1/edit
-  def edit
-  end
-
-  # POST /consultations
-  # POST /consultations.json
   def create
     @consultation = Consultation.new(consultation_params)
 
@@ -38,9 +28,8 @@ class ConsultationsController < ApplicationController
     end
   end
 
-  # PATCH/PUT /consultations/1
-  # PATCH/PUT /consultations/1.json
   def update
+    authorize Consultation
     respond_to do |format|
       if @consultation.update(consultation_params)
         format.html { redirect_to @consultation, notice: 'Consultation was successfully updated.' }
@@ -52,8 +41,6 @@ class ConsultationsController < ApplicationController
     end
   end
 
-  # DELETE /consultations/1
-  # DELETE /consultations/1.json
   def destroy
     @consultation.destroy
     respond_to do |format|
@@ -70,6 +57,6 @@ class ConsultationsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def consultation_params
-      params.slice(:consultation).permit(policy(Consultation).permitted_attributes(params))
+      params.fetch(:consultation, {}).permit(:id, :subject, :importance, :body, :city, :skype, :email, :phone, :archive)
     end
 end

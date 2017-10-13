@@ -2,23 +2,21 @@
 <%= hidden_field_tag :sort, params[:sort] %>
 <div class="table-responsive">
   <table class="table table-bordered table-condensed">
-      <tr>
+     <tr>
         <th> <%= "id" %></th>
         <th> <%= "Суть вопроса" %></th>
         <th> <%= "Важность" %></th>
-        <th> <%= "Категория" %></th>
         <th> <%= "Город пациента" %></th>
         <th> <%= "Дата создания" %></th>
       </tr>
 
-      <% @questions.each do |question| %>
+      <% @consultations.each do |consultation| %>
         <tr>
-          <td><%= question.id %></td>
-          <td><%= link_to question.subject, question_path(question) %></td>
-          <td><%= question.importance %></td>
-          <td><%= question.category %></td>
-          <td><%= question.city %></td>
-          <td><%= question.created_at %></td>
+          <td><%= consultation.id %></td>
+          <td><%= link_to consultation.subject, consultation_path(consultation) %></td>
+          <td><%= consultation.importance %></td>
+          <td><%= consultation.city %></td>
+          <td><%= consultation.created_at %></td>
         </tr>
       <% end %>
   </table>

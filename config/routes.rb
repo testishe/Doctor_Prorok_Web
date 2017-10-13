@@ -7,7 +7,8 @@ Rails.application.routes.draw do
                  confirmations: 'users/confirmations',
                  passwords: 'users/passwords' }
 
-  resources :questions, :answers, :articles, :consultations, except: [:destroy]
+  resources :answers, :articles, except: [:destroy]
+  resources :questions, :consultations, except: [:destroy, :edit]
 
   get 'contacts' => 'contacts#index', as: :contacts
 

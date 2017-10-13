@@ -20,9 +20,6 @@ class QuestionsController < ApplicationController
     @question = Question.new
   end
 
-  def edit
-  end
-
   # POST /questions
   # POST /questions.json
   def create
