@@ -1,25 +1,12 @@
-<p id="notice"><%= notice %></p>
+<div style="width: 100%;">
+  <p id="notice"><%= notice %></p>
+  <div class="buttons_padding">
 
-<h1>Questions</h1>
+  </div>
 
-<table>
-  <thead>
-    <tr>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
+  <h1>Полученные вопросы</h1>
 
-  <tbody>
-    <% @questions.each do |question| %>
-      <tr>
-        <td><%= link_to 'Show', question %></td>
-        <td><%= link_to 'Edit', edit_question_path(question) %></td>
-        <td><%= link_to 'Destroy', question, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
-
-<br>
-
-<%= link_to 'New Question', new_question_path %>
+  <div style="width: 100%; padding-top: 15px;">
+    <div class="objects_table"><%= render 'questions' %></div>
+  </div>
+</div>

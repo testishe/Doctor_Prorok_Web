@@ -1,15 +1,18 @@
 class QuestionsController < ApplicationController
-  before_action :set_question, only: [:show, :edit, :update, :destroy]
+  before_action :set_question, only: [:show, :update, :edit]
+  helper_method :sort_column, :sort_direction
 
   # GET /questions
   # GET /questions.json
   def index
+    authorize Question
     @questions = Question.all
   end
 
   # GET /questions/1
   # GET /questions/1.json
   def show
+    authorize Question
   end
 
   # GET /questions/new
@@ -17,7 +20,6 @@ class QuestionsController < ApplicationController
     @question = Question.new
   end
 
-  # GET /questions/1/edit
   def edit
   end
 
@@ -40,6 +42,7 @@ class QuestionsController < ApplicationController
   # PATCH/PUT /questions/1
   # PATCH/PUT /questions/1.json
   def update
+    authorize Question
     respond_to do |format|
       if @question.update(question_params)
         format.html { redirect_to @question, notice: 'Question was successfully updated.' }
@@ -51,16 +54,6 @@ class QuestionsController < ApplicationController
     end
   end
 
-  # DELETE /questions/1
-  # DELETE /questions/1.json
-  def destroy
-    @question.destroy
-    respond_to do |format|
-      format.html { redirect_to questions_url, notice: 'Question was successfully destroyed.' }
-      format.json { head :no_content }
-    end
-  end
-
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_question
@@ -69,6 +62,14 @@ class QuestionsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def question_params
-      params.fetch(:question, {})
+      params.fetch(:question, {}).permit(:id, :subject, :importance, :category, :body, :city, :email, :phone, :contact, :archive)
+    end
+
+    def sort_column
+      Question.column_names.include?(params[:sort]) ? params[:sort] : "id"
+    end
+
+    def sort_direction
+      %w[asc desc].include?(params[:direction]) ? params[:direction] : "desc"
     end
 end

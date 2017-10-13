@@ -1,4 +1,65 @@
-<p id="notice"><%= notice %></p>
+<div style="width: 100%;">
+  <p id="notice"><%= notice %></p>
+  <div class="buttons_padding">
+    <%= link_to 'Редактировать', edit_question_path(@question), class: "btn btn-primary" %> 
+    <%= link_to 'К списку вопросов', questions_path, class: "btn btn-primary" %>
+  </div>
 
-<%= link_to 'Edit', edit_question_path(@question) %> |
-<%= link_to 'Back', questions_path %>
+  <div class="container">
+    <h2>Подробная информация </h2>
+    <table class="table table-bordered">
+      <tbody>
+        <tr>
+          <th> ID </th>
+          <td><%= @question.id %></td>
+        </tr>
+
+        <tr>
+          <th> Предмет вопроса: </th>
+          <td><%= @question.subject %></td>
+        </tr>
+
+        <tr>
+          <th> Важность вопроса: </th>
+          <td><%= @question.importance %></td>
+        </tr>
+
+        <tr>
+          <th> Категория вопроса: </th>
+          <td><%= @question.category %></td>
+        </tr>
+
+        <tr>
+          <th> Тело вопроса: </th>
+          <td><%= @question.body %></td>
+        </tr>
+
+        <tr>
+          <th> Город: </th>
+          <td><%= @question.city %></td>
+        </tr>
+
+        <tr>
+          <th> Email: </th>
+          <td><%= @question.email %></td>
+        </tr>
+
+        <tr>
+          <th> Номер телефона: </th>
+          <td><%= @question.phone %></td>
+        </tr>
+
+        <tr>
+          <th> Дополнительные контакты: </th>
+          <td><%= @question.contact %></td>
+        </tr>
+      
+      </tbody>
+    </table>
+  </div>
+
+  <div class="buttons_padding">
+    
+  </div>
+
+</div>

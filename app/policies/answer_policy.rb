@@ -1,4 +1,5 @@
 class AnswerPolicy < ApplicationPolicy
+  before_action :authenticate_user!, except: [:index, :show]
   attr_reader :current_user, :model
 
   def initialize(current_user, model)

@@ -1,4 +1,5 @@
 class ConsultationsController < ApplicationController
+  before_action :authenticate_user!, except: [:new, :create]
   before_action :set_consultation, only: [:show, :edit, :update, :destroy]
 
   # GET /consultations
@@ -69,6 +70,6 @@ class ConsultationsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def consultation_params
-      params.fetch(:consultation, {})
+      params.slice(:consultation).permit(policy(Consultation).permitted_attributes(params))
     end
 end

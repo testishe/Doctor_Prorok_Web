@@ -11,12 +11,27 @@ class QuestionPolicy < ApplicationPolicy
     false
   end
 
+  def index?
+    return true if @current_user
+    false
+  end
+
+  def show?
+    return true if @current_user
+    false
+  end
+
+  def update?
+    return true if @current_user
+    false
+  end
+
   def permitted_attributes(params)
     if params[:action] == 'update'
-      [question: [:id, :subject, :importance, :category, :body, :city, :email, :phone, :contact, :archive]]
+      [questions: [:id, :subject, :importance, :category, :body, :city, :email, :phone, :contact, :archive]]
     else
       params[:action] == 'create'
-      [question: [:id, :subject, :importance, :category, :body, :city, :email, :phone, :contact, :archive]]
+      [questions: [:id, :subject, :importance, :category, :body, :city, :email, :phone, :contact, :archive]]
     end
   end
 end
