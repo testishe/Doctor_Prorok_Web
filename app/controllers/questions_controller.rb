@@ -59,7 +59,7 @@ class QuestionsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def question_params
-      params.fetch(:question, {}).permit(:id, :subject, :importance, :category, :body, :city, :email, :phone, :contact, :archive)
+      params.fetch(:question, {}).permit(:id, :category, :body, :city, :email, :phone, :contact, :archive)
     end
 
     def sort_column

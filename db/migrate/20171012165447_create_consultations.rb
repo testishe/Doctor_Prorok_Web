@@ -2,7 +2,8 @@ class CreateConsultations < ActiveRecord::Migration[5.1]
   def change
     create_table :consultations do |t|
       t.string  :subject,   null: false, default: ""
-      t.string  :importance
+      t.string  :importance,null: false, default: ""
+      t.string  :category,  null: false, default: ""
       t.text    :body,      null: false, default: ""
       t.string  :city,      null: false, default: ""
       t.string  :skype,     null: false, default: ""

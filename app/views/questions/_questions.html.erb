@@ -4,8 +4,6 @@
   <table class="table table-bordered table-condensed">
       <tr>
         <th> <%= "id" %></th>
-        <th> <%= "Суть вопроса" %></th>
-        <th> <%= "Важность" %></th>
         <th> <%= "Категория" %></th>
         <th> <%= "Город пациента" %></th>
         <th> <%= "Дата создания" %></th>
@@ -13,9 +11,7 @@
 
       <% @questions.each do |question| %>
         <tr>
-          <td><%= question.id %></td>
-          <td><%= link_to question.subject, question_path(question) %></td>
-          <td><%= question.importance %></td>
+          <td><%= link_to question.id, question_path(question) %></td>
           <td><%= question.category %></td>
           <td><%= question.city %></td>
           <td><%= question.created_at %></td>

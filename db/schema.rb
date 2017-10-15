@@ -35,7 +35,8 @@ ActiveRecord::Schema.define(version: 20171012165459) do
 
   create_table "consultations", force: :cascade do |t|
     t.string "subject", default: "", null: false
-    t.string "importance"
+    t.string "importance", default: "", null: false
+    t.string "category", default: "", null: false
     t.text "body", default: "", null: false
     t.string "city", default: "", null: false
     t.string "skype", default: "", null: false
@@ -47,14 +48,12 @@ ActiveRecord::Schema.define(version: 20171012165459) do
   end
 
   create_table "questions", force: :cascade do |t|
-    t.string "subject", default: "", null: false
-    t.string "importance"
     t.string "category", default: "", null: false
     t.text "body", default: "", null: false
     t.string "city", default: "", null: false
     t.string "email", default: "", null: false
     t.string "phone", default: "", null: false
-    t.string "contact", default: "", null: false
+    t.text "contact", default: "", null: false
     t.boolean "archive", default: false, null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false

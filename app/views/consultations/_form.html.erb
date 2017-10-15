@@ -3,16 +3,19 @@
 
   <div class="form-inputs">
     <%= f.input :subject, label: 'Предмет обращения' %>
-    <%= f.input :importance, label: 'Важность проблемы'  %>
-    <%= f.input :body, label: 'Вопрос' %>
-    <%= f.input :city, label: 'Город' %>
+    <%= f.input :category, label: 'Категория вопроса', error: "Не может быть пустым", priority: [ "Общий_вопрос" ],
+   collection: [ "Общий_вопрос", "Хирургия", "Другое" ]  %>
+    <%= f.input :importance, label: 'Срочность проблемы', error: "Не может быть пустым", priority: [ "Не_срочно" ],
+   collection: [ "Не_срочно", "Срочно", "Очень_срочно" ]  %>
+    <%= f.input :body, as: :text, input_html: { rows: 13 }, label: 'Вопрос', error: "Не может быть пустым. От 1 до 50000 симоволов", hint: 'От 1 до 50000 симоволов' %>
+    <%= f.input :city, label: 'Город', error: "Не может быть пустым"  %>
     <%= f.input :skype, label: 'Skype name' %>
-    <%= f.input :email, label: 'E-Mail' %>
-    <%= f.input :phone, label: 'Контактный телефон' %>
+    <%= f.input :email, label: 'E-Mail', error: "Не может быть пустым"  %>
+    <%= f.input :phone, label: 'Контактный телефон', error: "Не может быть пустым" %>
     <%= f.error :base %>
   </div>
 
   <div class="form-actions">
-    <%= f.button :submit, "Отправить запрос" %>
+    <%= f.button :submit, "Отправить запрос на консультацию" %>
   </div>
 <% end %>
