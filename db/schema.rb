@@ -42,6 +42,7 @@ ActiveRecord::Schema.define(version: 20171012165459) do
     t.string "skype", default: "", null: false
     t.string "email", default: "", null: false
     t.string "phone", default: "", null: false
+    t.text "contact", default: "", null: false
     t.boolean "archive", default: false, null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false

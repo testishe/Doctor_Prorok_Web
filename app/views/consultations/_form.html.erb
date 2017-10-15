@@ -12,6 +12,7 @@
     <%= f.input :skype, label: 'Skype name' %>
     <%= f.input :email, label: 'E-Mail', error: "Не может быть пустым"  %>
     <%= f.input :phone, label: 'Контактный телефон', error: "Не может быть пустым" %>
+    <%= f.input :contact, as: :text, label: 'Другие способы связи (Соц. сети, Skype, Telegram, Viber etc.)', input_html: { rows: 10 } %>
     <%= f.error :base %>
   </div>
 

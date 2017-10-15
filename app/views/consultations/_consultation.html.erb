@@ -12,7 +12,7 @@
 
       <% @consultations.each do |consultation| %>
         <tr>
-          <td><%= consultation.id %></td>
+          <td><%= link_to consultation.id, consultation_path(consultation) %></td>
           <td><%= link_to consultation.subject, consultation_path(consultation) %></td>
           <td><%= consultation.importance %></td>
           <td><%= consultation.city %></td>
