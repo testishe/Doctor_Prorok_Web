@@ -10,8 +10,8 @@
       collection: [ "Мужской", "Женский" ] %>
     <%= f.input :category, label: 'Категория вопроса', error: "Не может быть пустым", priority: [ "Общий_вопрос" ],
       collection: [ "Общий_вопрос", "Хирургия", "Другое" ]  %>
+    <%= f.input :chronic_diseases, as: :text, input_html: { rows: 13 }, label: 'Хронические заболевания', error: "До 50000 симоволов" %>
     <%= f.input :body, as: :text, input_html: { rows: 13 }, label: 'Вопрос', error: "Не может быть пустым. От 1 до 50000 симоволов" %>
-    <%= f.input :chronic_diseases, as: :text, input_html: { rows: 13 }, label: 'Хронические заболевания', error: "Не может быть пустым. От 1 до 50000 симоволов" %>
     <%= f.input :city, label: 'Город', error: "Не может быть пустым" %>
     <%= f.input :email, label: 'E-Mail', error: "Не может быть пустым" %>
     <%= f.input :phone, label: 'Контактный телефон', error: "Не может быть пустым" %>

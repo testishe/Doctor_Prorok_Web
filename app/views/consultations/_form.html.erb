@@ -2,12 +2,19 @@
   <%= f.error_notification %>
 
   <div class="form-inputs">
+    <%= f.input :last_name, label: 'Фамилия' %>
+    <%= f.input :first_name, label: 'Имя' %>
+    <%= f.input :patronymic_name, label: 'Отчество' %>
+    <%= f.input :age, label: 'Возраст' %>
+    <%= f.input :gender,  label: 'Пол',
+      collection: [ "Мужской", "Женский" ] %>
     <%= f.input :subject, label: 'Предмет обращения' %>
     <%= f.input :category, label: 'Категория вопроса', error: "Не может быть пустым", priority: [ "Общий_вопрос" ],
    collection: [ "Общий_вопрос", "Хирургия", "Другое" ]  %>
     <%= f.input :importance, label: 'Срочность проблемы', error: "Не может быть пустым", priority: [ "Не_срочно" ],
    collection: [ "Не_срочно", "Срочно", "Очень_срочно" ]  %>
-    <%= f.input :body, as: :text, input_html: { rows: 13 }, label: 'Вопрос', error: "Не может быть пустым. От 1 до 50000 симоволов", hint: 'От 1 до 50000 симоволов' %>
+    <%= f.input :chronic_diseases, as: :text, input_html: { rows: 13 }, label: 'Хронические заболевания', error: "До 50000 симоволов" %>
+    <%= f.input :body, as: :text, input_html: { rows: 13 }, label: 'Описание проблемы', error: "Не может быть пустым. От 1 до 50000 симоволов", hint: 'До 50000 симоволов' %>
     <%= f.input :city, label: 'Город', error: "Не может быть пустым"  %>
     <%= f.input :skype, label: 'Skype name' %>
     <%= f.input :email, label: 'E-Mail', error: "Не может быть пустым"  %>

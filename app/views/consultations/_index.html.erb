@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+  <% if current_page?(consultations_path) %>
+      <h1>Не обработанные запросы</h1>
+    <% elsif current_page?(get_general_consultations_path) %>
+      <h1>Общие запросы</h1>
+    <% elsif current_page?(get_archive_consultations_path) %>
+      <h1>Архив вопросов</h1>
+    <% elsif current_page?(get_surgery_consultations_path) %>
+      <h1>Вопросы по хирургии</h1>
+    <% elsif current_page?(get_important_consultations_path) %>
+      <h1>Срочные запросы</h1>
+    <% elsif current_page?(get_normal_consultations_path) %>
+      <h1>Срочность: нормальная</h1>
+  <% end %>
+
+
+  <div class="btn-group">
+    <%= link_to 'Не обработанные запросы', consultations_path, class: "btn btn-info" %>
+    <%= link_to 'Общие запросы', get_general_consultations_path, class: "btn btn-success" %>
+    <%= link_to 'Хирургия', get_surgery_consultations_path, class: "btn btn-success" %>
+    <%= link_to 'Срочные запросы', get_important_consultations_path, class: "btn btn-success" %>
+    <%= link_to 'Срочность: нормальная', get_normal_consultations_path, class: "btn btn-success" %>
+    <%= link_to 'Архив запросов', get_archive_consultations_path, class: "btn btn-warning" %>
+  </div>
+
+   <div style="width: 100%; padding-top: 15px;">
+    <div class="objects_table"><%= render 'consultation' %></div>
+  </div>

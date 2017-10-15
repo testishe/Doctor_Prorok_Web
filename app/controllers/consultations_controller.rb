@@ -1,9 +1,9 @@
 class ConsultationsController < ApplicationController
-  before_action :set_consultation, only: [:show, :edit, :update]
+  before_action :set_consultation, only: [:show, :edit, :update, :activate_deactivate_consultation]
 
   def index
     authorize Consultation
-    @consultations = Consultation.all
+    @consultations = Consultation.where(archive: false)
   end
 
   def show
@@ -41,12 +41,43 @@ class ConsultationsController < ApplicationController
     end
   end
 
-  def destroy
-    @consultation.destroy
-    respond_to do |format|
-      format.html { redirect_to consultations_url, notice: 'Consultation was successfully destroyed.' }
-      format.json { head :no_content }
+  def activate_deactivate_consultation
+    authorize Consultation
+    if (@consultation.archive == false) 
+      @consultation.update_column(:archive, true)
+      redirect_to @consultation, notice: "Запрос отправлен в архив"
+    else
+      @consultation.update_column(:archive, false)
+      redirect_to @consultation, notice: "Запрос извлечен из архива"
     end
+  end
+
+  #Randge by CATEGOTY
+  def get_general_consultations
+    authorize Consultation
+    @consultations = Consultation.where(category: "Общий_вопрос").where(archive: false)
+  end
+
+  def get_surgery_consultations
+    authorize Consultation
+    @consultations = Consultation.where(category: "Хирургия").where(archive: false)
+  end
+
+  # Range by IMPORTANCE
+  def get_important_consultations
+    authorize Consultation
+    @consultations = Consultation.where(importance: "Срочно").where(archive: false)
+  end
+
+  def get_normal_consultations
+    authorize Consultation
+    @consultations = Consultation.where(importance: "Нормально").where(archive: false)
+  end
+
+  # Archive consultations
+  def get_archive_consultations
+    authorize Consultation
+    @consultations = Consultation.where(archive: true)
   end
 
   private
@@ -57,6 +88,6 @@ class ConsultationsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def consultation_params
-      params.fetch(:consultation, {}).permit(:id, :subject, :importance, :category, :body, :city, :skype, :email, :phone, :contact, :archive)
+      params.fetch(:consultation, {}).permit(:id, :subject, :importance, :category, :body, :city, :skype, :email, :phone, :contact, :archive, :age, :gender, :last_name, :first_name, :patronymic_name, :chronic_diseases)
     end
 end

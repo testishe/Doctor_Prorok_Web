@@ -26,6 +26,26 @@ class QuestionPolicy < ApplicationPolicy
     false
   end
 
+  def activate_deactivate_question?
+    return true if @current_user
+    false
+  end
+
+  def get_general_questions?
+    return true if @current_user
+    false
+  end
+
+  def get_surgery_questions?
+    return true if @current_user
+    false
+  end
+
+  def get_archive_questions?
+    return true if @current_user
+    false
+  end
+
   def permitted_attributes(params)
     if params[:action] == 'update'
       [questions: [:id, :subject, :importance, :category, :body, :city, :email, :phone, :contact, :archive]]

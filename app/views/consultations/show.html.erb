@@ -2,6 +2,16 @@
   <p id="notice"><%= notice %></p>
   <div class="buttons_padding">
     <%= link_to 'К списку запросов на консультацию', consultations_path, class: "btn btn-primary" %>
+    <% if @consultation.archive == true %>
+      <%= link_to "Извлечь из архива", activate_deactivate_consultation_path, class: "btn btn-primary btn-success",
+          method: "put", data: {confirm: "Извлечь из архива?"}%>
+    <% end %>
+    <% if @consultation.archive == false %>
+    <%= link_to "Архивировать запрос", activate_deactivate_consultation_path, class: "btn btn-primary btn-danger",
+          method: "put", data: {confirm: "Отправить в архив?"}%>
+<% end %>
+
+
   </div>
 
   <div class="container">
@@ -11,6 +21,21 @@
         <tr>
           <th> ID </th>
           <td><%= @consultation.id %></td>
+        </tr>
+
+        <tr>
+        <th> ФИО </th>
+        <td><%= @consultation.last_name.to_s << " " <<
+                @consultation.first_name.to_s << " " << 
+                @consultation.patronymic_name.to_s %></td>
+      </tr>
+      <tr>
+          <th> Пол клиента: </th>
+          <td><%= @consultation.gender %></td>
+        </tr>
+        <tr>
+          <th> Возраст клиента: </th>
+          <td><%= @consultation.age %></td>
         </tr>
 
         <tr>
@@ -24,12 +49,19 @@
         </tr>
 
         <tr>
-          <th> Важность вопроса: </th>
+          <th> Срочность запроса: </th>
           <td><%= @consultation.importance %></td>
         </tr>
 
         <tr>
-          <th> Тело вопроса: </th>
+          <th> Хронические заболевания: </th>
+          <td>
+          <%= @consultation.chronic_diseases %>
+          </td>
+        </tr>
+
+        <tr>
+          <th> Описание проблемы: </th>
           <td><%= @consultation.body %></td>
         </tr>
 
@@ -51,6 +83,11 @@
         <tr>
           <th> Skype: </th>
           <td><%= @consultation.skype %></td>
+        </tr>
+
+        <tr>
+          <th> Дополнительные контакты: </th>
+          <td><%= @consultation.contact %></td>
         </tr>
       
       </tbody>

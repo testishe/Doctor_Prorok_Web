@@ -3,9 +3,11 @@
 <div class="table-responsive">
   <table class="table table-bordered table-condensed">
      <tr>
-        <th> <%= "id" %></th>
+        <th> <%= "ID" %></th>
+        <th> <%= "ФИО" %></th>
+        <th> <%= "Возраст клиента" %></th>
         <th> <%= "Суть вопроса" %></th>
-        <th> <%= "Важность" %></th>
+        <th> <%= "Срочность" %></th>
         <th> <%= "Город пациента" %></th>
         <th> <%= "Дата создания" %></th>
       </tr>
@@ -13,7 +15,9 @@
       <% @consultations.each do |consultation| %>
         <tr>
           <td><%= link_to consultation.id, consultation_path(consultation) %></td>
-          <td><%= link_to consultation.subject, consultation_path(consultation) %></td>
+           <td><%= link_to consultation.last_name << "  " << consultation.first_name << " " << consultation.patronymic_name, consultation_path(consultation) %> </td>
+          <td><%= consultation.age %></td>
+          <td><%= consultation.subject %></td>
           <td><%= consultation.importance %></td>
           <td><%= consultation.city %></td>
           <td><%= consultation.created_at %></td>

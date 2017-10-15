@@ -43,6 +43,7 @@ class QuestionsController < ApplicationController
   end
 
   def activate_deactivate_question
+    authorize Question
     if (@question.archive == false) 
       @question.update_column(:archive, true)
       redirect_to @question, notice: "Вопрос отправлен в архив"
@@ -53,14 +54,17 @@ class QuestionsController < ApplicationController
   end
 
   def get_general_questions
+    authorize Question
     @questions = Question.where(category: "Общий_вопрос").where(archive: false)
   end
 
   def get_surgery_questions
+    authorize Question
     @questions = Question.where(category: "Хирургия").where(archive: false)
   end
 
   def get_archive_questions
+    authorize Question
     @questions = Question.where(archive: true)
   end
 
