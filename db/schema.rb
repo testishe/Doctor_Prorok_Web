@@ -34,10 +34,16 @@ ActiveRecord::Schema.define(version: 20171012165459) do
   end
 
   create_table "consultations", force: :cascade do |t|
+    t.string "first_name", default: "", null: false
+    t.string "last_name", default: "", null: false
+    t.string "patronymic_name", default: "", null: false
+    t.integer "age", default: 0, null: false
+    t.string "gender", default: "", null: false
     t.string "subject", default: "", null: false
     t.string "importance", default: "", null: false
     t.string "category", default: "", null: false
     t.text "body", default: "", null: false
+    t.text "chronic_diseases", default: "", null: false
     t.string "city", default: "", null: false
     t.string "skype", default: "", null: false
     t.string "email", default: "", null: false
@@ -49,8 +55,14 @@ ActiveRecord::Schema.define(version: 20171012165459) do
   end
 
   create_table "questions", force: :cascade do |t|
+    t.string "first_name", default: "", null: false
+    t.string "last_name", default: "", null: false
+    t.string "patronymic_name", default: "", null: false
+    t.integer "age", default: 0, null: false
+    t.string "gender", default: "", null: false
     t.string "category", default: "", null: false
     t.text "body", default: "", null: false
+    t.text "chronic_diseases", default: "", null: false
     t.string "city", default: "", null: false
     t.string "email", default: "", null: false
     t.string "phone", default: "", null: false

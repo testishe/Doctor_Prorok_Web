@@ -1,10 +1,17 @@
 <%= simple_form_for(@question) do |f| %>
   <%= f.error_notification %>
 
-  <div class="form-inputs">
+  <div class="form-inputs"> 
+    <%= f.input :last_name, label: 'Фамилия' %>
+    <%= f.input :first_name, label: 'Имя' %>
+    <%= f.input :patronymic_name, label: 'Отчество' %>
+    <%= f.input :age, label: 'Возраст' %>
+    <%= f.input :gender,  label: 'Пол',
+      collection: [ "Мужской", "Женский" ] %>
     <%= f.input :category, label: 'Категория вопроса', error: "Не может быть пустым", priority: [ "Общий_вопрос" ],
-   collection: [ "Общий_вопрос", "Хирургия", "Другое" ]  %>
+      collection: [ "Общий_вопрос", "Хирургия", "Другое" ]  %>
     <%= f.input :body, as: :text, input_html: { rows: 13 }, label: 'Вопрос', error: "Не может быть пустым. От 1 до 50000 симоволов" %>
+    <%= f.input :chronic_diseases, as: :text, input_html: { rows: 13 }, label: 'Хронические заболевания', error: "Не может быть пустым. От 1 до 50000 симоволов" %>
     <%= f.input :city, label: 'Город', error: "Не может быть пустым" %>
     <%= f.input :email, label: 'E-Mail', error: "Не может быть пустым" %>
     <%= f.input :phone, label: 'Контактный телефон', error: "Не может быть пустым" %>

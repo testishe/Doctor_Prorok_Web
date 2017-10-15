@@ -4,14 +4,18 @@
   <table class="table table-bordered table-condensed">
       <tr>
         <th> <%= "id" %></th>
+        <th> <%= "ФИО" %></th>
+        <th> <%= "Возраст клиента" %></th>
         <th> <%= "Категория" %></th>
-        <th> <%= "Город пациента" %></th>
+        <th> <%= "Город клиента" %></th>
         <th> <%= "Дата создания" %></th>
       </tr>
 
       <% @questions.each do |question| %>
         <tr>
           <td><%= link_to question.id, question_path(question) %></td>
+          <td><%= link_to question.last_name << "  " << question.first_name << " " << question.patronymic_name, question_path(question) %> </td>
+          <td><%= question.age %></td>
           <td><%= question.category %></td>
           <td><%= question.city %></td>
           <td><%= question.created_at %></td>

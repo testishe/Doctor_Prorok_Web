@@ -1,5 +1,5 @@
 class Consultation < ApplicationRecord
-  validates_presence_of :subject, :importance, :category, :body, :email, :city, :phone
+  validates_presence_of :subject, :importance, :category, :body, :email, :city, :phone, :last_name, :first_name, :patronymic_name
   validates :body, length: { in: 1..50000 }
   validates :contact, length: { in: 0..10000 }
 

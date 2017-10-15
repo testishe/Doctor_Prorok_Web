@@ -1,0 +1,23 @@
+<p id="notice"><%= notice %></p>
+
+  <% if current_page?(questions_path) %>
+      <h1>Не обработанные вопросы</h1>
+    <% elsif current_page?(get_general_questions_path) %>
+        <h1>Общие вопросы</h1>
+    <% elsif current_page?(get_archive_questions_path) %>
+        <h1>Архив вопросов</h1>
+        <% elsif current_page?(get_surgery_questions_path) %>
+        <h1>Вопросы по хирургии</h1>
+  <% end %>
+
+
+  <div class="btn-group">
+    <%= link_to 'Не обработанные вопросы', questions_path, class: "btn btn-info" %>
+    <%= link_to 'Общие вопросы', get_general_questions_path, class: "btn btn-success" %>
+    <%= link_to 'Хирургия', get_surgery_questions_path, class: "btn btn-success" %>
+    <%= link_to 'Архив вопросов', get_archive_questions_path, class: "btn btn-warning" %>
+  </div>
+
+   <div style="width: 100%; padding-top: 15px;">
+    <div class="objects_table"><%= render 'questions' %></div>
+  </div>

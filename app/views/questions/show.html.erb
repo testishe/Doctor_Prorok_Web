@@ -2,7 +2,16 @@
   <p id="notice"><%= notice %></p>
   <div class="buttons_padding">
     <%= link_to 'К списку вопросов', questions_path, class: "btn btn-primary" %>
-  </div>
+  
+  <% if @question.archive == true %>
+  <%= link_to "Извлечь из архива", activate_deactivate_path, class: "btn btn-primary btn-success",
+      method: "put", data: {confirm: "Извлечь из архива?"}%>
+<% end %>
+<% if @question.archive == false %>
+<%= link_to "Архивировать вопрос", activate_deactivate_path, class: "btn btn-primary btn-danger",
+      method: "put", data: {confirm: "Отправить в архив?"}%>
+<% end %>
+</div>
 
   <div class="container">
     <h2>Подробная информация </h2>
@@ -13,15 +22,37 @@
           <td><%= @question.id %></td>
         </tr>
 
+      <tr>
+        <th> ФИО </th>
+        <td><%= @question.last_name.to_s << " " <<
+                @question.first_name.to_s << " " << 
+                @question.patronymic_name.to_s %></td>
+      </tr>
+      <tr>
+          <th> Пол клиента: </th>
+          <td><%= @question.gender %></td>
+        </tr>
+        <tr>
+          <th> Возраст клиента: </th>
+          <td><%= @question.age %></td>
+        </tr>
+
         <tr>
           <th> Категория вопроса: </th>
           <td><%= @question.category %></td>
         </tr>
 
         <tr>
-          <th> Тело вопроса: </th>
+          <th> Вопрос: </th>
           <td>
           <%= @question.body %>
+          </td>
+        </tr>
+
+        <tr>
+          <th> Хронические заболевания: </th>
+          <td>
+          <%= @question.chronic_diseases %>
           </td>
         </tr>
 
