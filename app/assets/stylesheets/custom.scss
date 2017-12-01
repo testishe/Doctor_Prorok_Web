@@ -118,4 +118,62 @@ tr:nth-child(even) {
   margin: 0 auto;
 }
 
+// новые стили
+
+
+.body {
+  background: #6a9ae8;
+}
+
+.new_question,
+.new_consultation {
+  display: block;
+  margin: 0 auto;
+  padding: 30px;
+  background: #fff;
+  .input {
+    margin-top: 20px;
+    input {
+      padding: 15px 20px;
+      background: #ccc;
+      border: none;
+      &:focus {
+        border-color: #4e84db;
+      }
+    }
+  }
+
+  .form-actions{
+    input
+      background: #4e84db;
+      box-shadow: 1px 0 3px 0 rgba(78, 132, 219 .3);
+      transition: .3s;
+      &:hover{
+        background: #2558aa;
+        box-shadow: 3px 0 5px 0 rgba(78, 132, 219 .5);
+      }
+  }
+}
+
+
+// топ меню
+.head-wrap  {
+  max-width: 660px;
+  margin: 0 auto;
+  background: #fff;
+}
+
+ul.nav{
+    display: flex;
+    flex-wrap: wrap;
+  a{
+    transition: .3s;
+    &:hover{
+      background: #4e84db;
+    }
+  }
+}
+
+
+
 
